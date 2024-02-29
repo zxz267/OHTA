@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="OHTA: One-shot Hand Avatar via Data-driven Implicit Priors">
+  <meta name="keywords" content="Hand Avatar">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OHTA: One-shot Hand Avatar via Data-driven Implicit Priors</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/hello.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://pengfeiren96.github.io/DIR/">
+            Decoupled Iterative Refinement Framework for Interacting Hands Reconstruction from a Single RGB Image
+          </a>
+          <a class="navbar-item" href="https://zxz267.github.io/AvatarJLM/">
+            Realistic Full-Body Tracking from Sparse Observations via Joint-Level Modeling
+          </a>
+          <a class="navbar-item" href="https://zxz267.github.io/HaMuCo/">
+            HaMuCo: Hand Pose Estimation via Multiview Collaborative Self-Supervised Learning
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-widescreen">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">&#9995; OHTA: One-shot Hand Avatar via Data-driven Implicit Priors</h1>
+          <h2 class="title publication-title is-4 has-text-grey">CVPR 2024</h2>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=3hSD41oAAAAJ">Xiaozheng Zheng</a>,
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=v8TFZI4AAAAJ">Chao Wen</a>,
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=iaqDkqMAAAAJ">Zhuo Su</a>,
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=Yeawk5sAAAAJ">Zeran Xu</a>,
+            </span>
+            <span class="author-block">
+              <a href="#">Zhaohu Li</a>,
+            </span>
+            <span class="author-block">
+              <a href="#">Yang Zhao</a>,
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?&user=ECKq3aUAAAAJ">Zhou Xue</a>,
+            </span>
+          </div>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">ByteDance</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+             <span class="link-block">
+               <a href="#"
+                  class="external-link button is-normal is-rounded is-dark">
+                 <span class="icon">
+                     <i class="fas fa-file-pdf"></i>
+                 </span>
+                 <span>Paper</span>
+               </a>
+             </span>
+              <span class="link-block">
+                <a href="#"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+<!--              <span class="link-block">-->
+<!--                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"-->
+<!--                   class="external-link button is-normal is-rounded is-dark">-->
+<!--                  <span class="icon">-->
+<!--                      <i class="fab fa-youtube"></i>-->
+<!--                  </span>-->
+<!--                  <span>Video</span>-->
+<!--                </a>-->
+<!--              </span>-->
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="#"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-widescreen">
+    <div class="hero-body">
+      <div class="is-centered">
+      <img src="./static/images/teaser.png" width="1200px"/>
+      </div>
+      <h2 class="subtitle has-text-centered">
+        Overview of our framework. <br>
+        We introduce a novel approach capable of creating implicit animatable hand avatars using just a single image. <br>
+        Applications: 1) text-to-avatar conversion, 2) hand texture and geometry editing, and 3) interpolation and sampling within the latent space.
+      </h2>
+
+    </div>
+  </div>
+</section>
+
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-steve">
+          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/interhand.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-toby">
+          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/mscoco.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-chair-tp">
+          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/real-captured.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-toby">
+          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/onehand10k.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-coffee">
+          <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/text.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-toby">
+          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/texture.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            In this paper, we delve into the creation of one-shot hand avatars, attaining high-fidelity and drivable hand representations swiftly from a single image.
+            With the burgeoning domains of the digital human, the need for quick and personalized hand avatar creation has become increasingly critical.
+            Existing techniques typically require extensive input data and may prove cumbersome or even impractical in certain scenarios.
+            To enhance accessibility, we present a novel method OHTA (One-shot Hand avaTAr) that enables the creation of detailed hand avatars from merely one image.
+            OHTA tackles the inherent difficulties of this data-limited problem by learning and utilizing data-driven hand priors.
+            Specifically, we design a hand prior model initially employed for 1) learning various hand priors with available data and subsequently for 2) the inversion and fitting of the target identity with prior knowledge.
+            OHTA demonstrates the capability to create high-fidelity hand avatars with consistent animatable quality, solely relying on a single image.
+            Furthermore, we illustrate the versatility of OHTA through diverse applications, encompassing text-to-avatar conversion, hand editing, and identity latent space manipulation.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Paper video. -->
+<!--    <div class="columns is-centered has-text-centered">-->
+<!--      <div class="column is-four-fifths">-->
+<!--        <h2 class="title is-3">Video</h2>-->
+<!--        <div class="publication-video">-->
+<!--          <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"-->
+<!--                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+    <!--/ Paper video. -->
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <!-- Animation. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Network Architecture</h2>
+
+        <!-- Interpolating. -->
+<!--        <div class="content has-text-justified">-->
+<!--          <p>-->
+<!--            We can also animate the scene by interpolating the deformation latent codes of two input-->
+<!--            frames. Use the slider here to linearly interpolate between the left frame and the right-->
+<!--            frame.-->
+<!--          </p>-->
+<!--        </div>-->
+        <div class="columns is-vcentered interpolation-panel">
+            <img src="./static/images/pipeline.png"
+                 class="interpolation-image"
+                 alt="Ours pipeline."/>
+          </div>
+        </div>
+        <br/>
+      </div>
+    </div>
+    <!--/ Animation. -->
+</section>
+
+<!--<section class="section">-->
+<!--  <div class="container is-max-desktop">-->
+<!--    <div class="columns is-centered">-->
+<!--      &lt;!&ndash; Visual Effects. &ndash;&gt;-->
+<!--      <div class="column">-->
+<!--        <div class="content">-->
+<!--          <h2 class="title is-3">Multi-View Deformation Network</h2>-->
+<!--          &lt;!&ndash;          <p>&ndash;&gt;-->
+<!--          &lt;!&ndash;            Using <i>nerfies</i> you can create fun visual effects. This Dolly zoom effect&ndash;&gt;-->
+<!--          &lt;!&ndash;            would be impossible without nerfies since it would require going through a wall.&ndash;&gt;-->
+<!--          &lt;!&ndash;          </p>&ndash;&gt;-->
+<!--          <img src="./static/images/pool_sample.png" width="600"/>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      &lt;!&ndash;/ Visual Effects. &ndash;&gt;-->
+
+<!--      &lt;!&ndash; Matting. &ndash;&gt;-->
+<!--      <div class="column">-->
+<!--        <h2 class="title is-3">Camera Pose Estimation Network</h2>-->
+<!--        <div class="columns is-centered">-->
+<!--          <div class="column content">-->
+<!--            <img src="./static/images/camnet.png">-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</section>-->
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Results</h2>
+        <h3 class="title is-4">Qualitative comparison on InterHand2.6M</h3>
+        <div class="columns is-vcentered interpolation-panel">
+          <img src="./static/images/comparison-interhand.png"
+               class="interpolation-image"
+               alt="Ours vs. state-of-the-art methods on InterHand2.6M."/>
+        </div>
+        <br>
+        <h3 class="title is-4">In-the-wild results from real-captured images and MSCOCO</h3>
+        <div class="columns is-vcentered interpolation-panel">
+          <img src="./static/images/in-the-wild.png"
+               class="interpolation-image"
+               alt="Ours in-the-wild results."/>
+        </div>
+        <h3 class="title is-4">Qualitative results on HanCo</h3>
+        <div class="columns is-vcentered interpolation-panel">
+          <img src="./static/images/hanco.png"
+               class="interpolation-image"
+               alt="Ours results on HanCo."/>
+        </div>
+        <h3 class="title is-4">Qualitative results on Onehand10K</h3>
+        <div class="columns is-vcentered interpolation-panel">
+          <img src="./static/images/onehand10k.png"
+               class="interpolation-image"
+               alt="Ours results on Onehand10K."/>
+        </div>
+        <h2 class="title is-3">Applications</h2>
+        <h3 class="title is-4">Text-to-avatar & Texture Editing</h3>
+        <div class="columns is-vcentered interpolation-panel">
+          <img src="./static/images/application.png"
+               class="interpolation-image"
+               alt="Text-to-avatar and texture editing."/>
+        </div>
+        <!-- <video id="teaser" autoplay muted loop height="100%">
+          <source src="./static/videos/iccv-hamuco.mp4" type="video/mp4">
+        </video> -->
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>
+      @inproceedings{zheng2024ohta,
+      title={OHTA: One-shot Hand Avatar via Data-driven Implicit Priors},
+      author={Zheng, Xiaozheng and Wen, Chao and Zhuo, Su and Zeran, Xu and Zhaohu, Li and Yang, Zhao and Xue, Zhou},
+      booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+      year={2024}}
+    </code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="#">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="#" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This means you are free to borrow the <a
+              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
+            we just ask that you link back to this page in the footer.
+            Please remember to remove the analytics code included in the header of the website which
+            you do not want on your website.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
