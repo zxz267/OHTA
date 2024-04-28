@@ -31,7 +31,7 @@
 
 ---
 
-<a href='https://zxz267.github.io/OHTA/'><img src='https://img.shields.io/badge/Project-Page-Green'></a> <a href='http://arxiv.org/abs/2402.18969'><img src='https://img.shields.io/badge/Paper-Arxiv-red'></a> [![YouTube](https://badges.aleen42.com/src/youtube.svg)]()
+<a href='https://zxz267.github.io/OHTA/'><img src='https://img.shields.io/badge/Project-Page-Green'></a> <a href='http://arxiv.org/abs/2402.18969'><img src='https://img.shields.io/badge/Paper-Arxiv-red'></a> [![YouTube](https://badges.aleen42.com/src/youtube.svg)](https://youtu.be/VPjjHNgtzJI)
 
 
 </div>
