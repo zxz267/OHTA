@@ -39,6 +39,8 @@
 
 ## :mega: Updates
 
+[06/2024] :star_struck: Code released! Please refer to [OHTA-code](https://github.com/bytedance/OHTA/).
+
 [02/2024] :partying_face: OHTA is accepted to CVPR 2024! Working on code release!
 
 
@@ -53,7 +55,3 @@ If you find our work useful for your research, please consider citing the paper:
   year={2024}
 }
 ```
-
-## :newspaper_roll: License
-
-Distributed under the MIT License. See `LICENSE` for more information.
